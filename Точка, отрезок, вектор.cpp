@@ -117,13 +117,26 @@ public:
 		double Help1, Help2;
 		Help1 = fabs(a.VecCoordX);
 		Help2 = fabs(b.VecCoordX);
-		a *= Help2;
-		b *= Help1;
-		if (a != b)
+		if ((Help1 == 0) && (Help2 == 0))
 		{
-				return false;
+			if ((a.VecCoordY * b.VecCoordY > 0) || ((a.VecCoordY == 0) && (b.VecCoordY == 0)))
+				return true;
 		}
-		else return true;
+		else
+		{
+			if ((Help1 == 0) || (Help2 == 0))
+				return false;
+			else
+			{
+				a *= Help2;
+				b *= Help1;
+				if (a != b)
+				{
+					return false;
+				}
+				else return true;
+			}
+		}		
 	}
 
 	bool Parallel(const Vector foo)
@@ -133,16 +146,26 @@ public:
 		double Help1, Help2;
 		Help1 = fabs(a.VecCoordX);
 		Help2 = fabs(b.VecCoordX);
-		a *= Help2;
-		b *= Help1;
-		if (a != b)
+		if ((Help1 == 0) && (Help2 == 0))
+			return true;
+		else
 		{
-			b.Reverse();
-			if (a != b)
+			if ((Help1 == 0) || (Help2 == 0))
 				return false;
-			else return true;
-		}
-		else return true;
+			else
+			{
+				a *= Help2;
+				b *= Help1;
+				if (a != b)
+				{
+					b.Reverse();
+					if (a != b)
+						return false;
+					else return true;
+				}
+				else return true;
+			}
+		}		
 	}
 };
 
@@ -245,7 +268,6 @@ public:
 		}
 		else
 		{
-			cout << "The intersection is Point - ";
 			A1 = One.A.ShowY() - One.B.ShowY();
 			B1 = One.B.ShowX() - One.A.ShowX();
 			C1 = One.A.ShowX()*One.B.ShowY() - One.B.ShowX()*One.A.ShowY();
@@ -255,7 +277,13 @@ public:
 			X1 = -((C1*B2 - C2*B1) / (A1*B2 - A2*B1));
 			Y1 = -((A1*C2 - C1*A2) / (A1*B2 - B1*A2));
 			Point Rez(X1, Y1);
-			Rez.PrintPoint();
+			if (One.PointAccessory(Rez) && Two.PointAccessory(Rez))
+			{
+				cout << "The intersection is Point - ";
+				Rez.PrintPoint();
+			}				
+			else
+				cout << "The intersection is Empty set." << endl;
 		}
 	}
 };
