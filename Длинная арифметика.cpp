@@ -18,7 +18,7 @@ public:
 	LongNum() : sign(0)
 	{}
 
-	LongNum(string s)
+	LongNum(const string s)
 	{
 		for (int i = (int)s.length(); i>0; i -= 9)
 			if (i < 9)
@@ -35,7 +35,7 @@ public:
 		sign = 1;
 	}
 
-	void printLN()
+	void printLN() const
 	{
 		printf("%d", ilum.empty() ? 0 : ilum.back());
 		for (int i = (int)ilum.size() - 2; i >= 0; --i)
@@ -43,7 +43,7 @@ public:
 		printf("\n");
 	}
 
-	bool operator > (const LongNum &b)
+	bool operator > (const LongNum &b) const
 	{
 		int carry = 1;
 		if (ilum.size() > b.ilum.size())
@@ -56,17 +56,11 @@ public:
 				if (ilum[i] < b.ilum[i])
 					carry = 0;
 			if (ilum == b.ilum) carry = 0;
-			if (carry == 0) return false;
-			else return true;
+			return (!(carry == 0));
 		}
 	}
 
-	void swap(LongNum &b)
-	{
-		ilum.swap(b.ilum);
-	}
-
-	LongNum operator + (const LongNum &b)
+	LongNum operator + (const LongNum &b) const
 	{
 		LongNum a = *this;
 		int carry = 0;
@@ -81,17 +75,18 @@ public:
 		return a;
 	}
 
-	LongNum operator - (const LongNum &c)
+	LongNum operator - (const LongNum &c) const
 	{
 		LongNum a = *this;
 		LongNum b = c;
 		if (b > a)
 		{
-			a.swap(b);
+			a.ilum.swap(b.ilum);
 			a.changeSign();
 		}
 		int carry = 0;
-		for (size_t i = 0; i<b.ilum.size() || carry; ++i) {
+		for (size_t i = 0; i<b.ilum.size() || carry; ++i)
+		{
 			a.ilum[i] -= carry + (i < b.ilum.size() ? b.ilum[i] : 0);
 			carry = a.ilum[i] < 0;
 			if (carry)  a.ilum[i] += base;
@@ -101,24 +96,25 @@ public:
 		return a;
 	}
 
-	LongNum operator * (const LongNum &b)
+	LongNum operator * (const LongNum &b) const
 	{
 		LongNum a = *this;
 		LongNum c;
 		for (int i = 0; i < (a.ilum.size() + b.ilum.size()); i++)
-		c.ilum.push_back(0);
+			c.ilum.push_back(0);
 		for (size_t i = 0; i<a.ilum.size(); ++i)
-			for (int j = 0, carry = 0; j<(int)b.ilum.size() || carry; ++j) {
-			long long cur = c.ilum[i + j] + a.ilum[i] * 1ll * (j < (int)b.ilum.size() ? b.ilum[j] : 0) + carry;
-			c.ilum[i + j] = int(cur % base);
-			carry = int(cur / base);
+			for (int j = 0, carry = 0; j<(int)b.ilum.size() || carry; ++j) 
+			{
+				long long cur = c.ilum[i + j] + a.ilum[i] * 1ll * (j < (int)b.ilum.size() ? b.ilum[j] : 0) + carry;
+				c.ilum[i + j] = int(cur % base);
+				carry = int(cur / base);
 			}
 		while (c.ilum.size() > 1 && c.ilum.back() == 0)
 			c.ilum.pop_back();
 		return c;
 	}
 
-	LongNum operator / (const int &b)
+	LongNum operator / (const int &b)  const
 	{
 		LongNum a = *this;
 		int carry = 0;
@@ -132,7 +128,7 @@ public:
 		return a;
 	}
 
-	int operator % (const int &b)
+	int operator % (const int &b) const
 	{
 		LongNum a = *this;
 		int carry = 0;
@@ -151,15 +147,15 @@ public:
 
 ostream& operator<<(ostream& os, const LongNum& dt)
 {
-	if ((dt.ilum.empty() - 1) && (dt.sign == 1))
+	if ((!(dt.ilum.empty())) && (dt.sign == 1))
 		os << '-';
-	os << (dt.ilum.empty() ? 0 : dt.ilum.back());	
+	os << (dt.ilum.empty() ? 0 : dt.ilum.back());
 	for (int i = (int)dt.ilum.size() - 2; i >= 0; --i)
 	{
 		os.width(9);
 		os.fill('0');
 		os << dt.ilum[i];
-	}		
+	}
 	return os;
 }
 
@@ -168,18 +164,50 @@ int main()
 	ifstream infile("INPUT.txt");
 	ofstream outfile("OUTPUT.txt");
 
-	string a, b;
-	int c, rez2;
+	/*string a, b;
 	infile >> a;
-	//infile >> b;
-	infile >> c;
+	infile >> b;
+	LongNum TestOne(a);
+	LongNum TestTwo(b);
+	TestOne = TestOne + TestTwo;
+	outfile << TestOne;*/
+
+	string a, b;
+	infile >> a;
+	infile >> b;
+	LongNum TestOne(a);
+	LongNum TestTwo(b);
+	TestOne = TestOne - TestTwo;
+	outfile << TestOne;
+
+
+	/*string a, b;
+	infile >> a;
+	infile >> b;
+	LongNum TestOne(a);
+	LongNum TestTwo(b);
+	TestOne = TestOne * TestTwo;
+	outfile << TestOne;*/
+
+	/*string a;
+	int b;
+	infile >> a;
+	LongNum TestOne(a);
+	infile >> b;
+	TestOne = TestOne / b;
+	outfile << TestOne;*/
+
+	/*string a;
+	int b, Rez;
+	infile >> a;
+	LongNum TestOne(a);
+	infile >> b;
+	Rez = TestOne % b;
+	outfile << Rez;*/
+
 	//getline(infile, a);
 	//getline(infile, b);
-	LongNum TestOne(a);
-	//LongNum TestTwo(b);
-	rez2 = TestOne % c;
-	//Rez.printLN();
-	outfile << rez2;
+	
 	//outfile << 'word' << ' ';
 	return 0;
 }

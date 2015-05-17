@@ -1,9 +1,7 @@
 #include <iostream>
-#include <math.h>
-#include <fstream>
-
 using namespace std;
-
+#ifndef _POINT_S_VEC_
+#define __POINT_S_VEC_
 class Point
 {
 private:
@@ -50,6 +48,8 @@ public:
 	}
 
 	friend istream& operator>>(istream& is, Point& dt);
+
+	friend ostream& operator<<(ostream& os, Point& dt);
 };
 
 class Vector
@@ -150,7 +150,7 @@ public:
 					return (a == b);
 				}
 			}
-		}		
+		}
 	};
 
 	bool Parallel(const Vector foo) const
@@ -245,7 +245,7 @@ public:
 			S = (x1*(y2 - y3) + x2*(y3 - y1) + x3*(y1 - y2)) / 2;
 			if ((S == 0) && ((TestOne.VecOneWay(TestTwo)) != 1)) return true;
 			else return false;
-		}		
+		}
 	};
 
 	void PrintSegment() const
@@ -358,12 +358,20 @@ public:
 	}
 
 	friend istream& operator>>(istream& is, Segment& dt);
+
+	friend ostream& operator<<(ostream& os, Segment& dt);
 };
 
 istream& operator>>(istream& is, Point& dt)
 {
 	is >> dt.x >> dt.y;
 	return is;
+}
+
+ostream& operator<<(ostream& os, Point& dt)
+{
+	os << dt.x << dt.y;
+	return os;
 }
 
 istream& operator>>(istream& is, Vector& dt)
@@ -378,85 +386,12 @@ istream& operator>>(istream& is, Segment& dt)
 	return is;
 }
 
-
-int main()
+ostream& operator<<(ostream& os, Segment& dt)
 {
-	ifstream infile("Test_point_segment_vector.txt");
-	int Number_of_tests, i;
-	int Operation_Number; //1 - (VecOneWay), 2 - (Parallel), 3 - (PointAccessory), 4 - (FindIntersectionPointWith), 5 - (FindIntersectionSegmentWith)
-	infile >> Number_of_tests;
-	for (i = 1; i <= Number_of_tests; i++)
-	{
-		infile >> Operation_Number;
-		switch (Operation_Number)
-		{
-		case 1:
-		{
-			Vector TestOne, TestTwo;
-			infile >> TestOne >> TestTwo;
-			bool Rez;
-			infile >> Rez;
-			if ((TestOne.VecOneWay(TestTwo)) != Rez)
-				cout << "Test " << i << " is not success!!!" << endl;
-			break;
-		}
-
-		case 2:
-		{
-			Vector TestOne, TestTwo;
-			infile >> TestOne >> TestTwo;
-			bool Rez;
-			infile >> Rez;
-			if ((TestOne.Parallel(TestTwo)) != Rez)
-				cout << "Test " << i << " is not success!!!" << endl;
-			break;
-		}
-
-		case 3:
-		{
-			Segment TestOne;
-			infile >> TestOne;
-			Point TestTwo;
-			infile >> TestTwo;
-			bool Rez;
-			infile >> Rez;
-			if ((TestOne.PointAccessory(TestTwo)) != Rez)
-				cout << "Test " << i << " is not success!!!" << endl;
-			break;
-		}
-
-		case 4:
-		{
-			Segment TestOne, TestTwo;
-			infile >> TestOne >> TestTwo;
-			Point Rez, Ret;
-			infile >> Rez;
-			int Check;
-			Check = TestOne.FindIntersectionPointWith(TestTwo, &Ret);
-			if ((Check != 1) || (Ret != Rez))
-				cout << "Test " << i << " is not success!!!" << endl;
-			break;
-		}
-
-		case 5:
-		{
-			Segment TestOne, TestTwo;
-			infile >> TestOne >> TestTwo;
-			Segment Rez, Ret;
-			infile >> Rez;
-			int Check;
-			Check = TestOne.FindIntersectionSegmentWith(TestTwo, &Ret);
-			if ((Check != 1) || (Ret != Rez))
-				cout << "Test " << i << " is not success!!!" << endl;
-			break;
-		}
-
-
-
-		default:
-			cout << "Error!!! Uncorrect Operation_Number!!! (Test " << i << ")" << endl;
-			break;
-		}
-	}
-	return 0;
+	os << dt.A << dt.B;
+	return os;
 }
+#endif
+
+
+
