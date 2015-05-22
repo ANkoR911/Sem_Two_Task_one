@@ -1,0 +1,107 @@
+21
+
+1
+Arbidol China Chalk 100 capsule
+1 150
+
+1
+Arbidol China Chalk 100 capsule
+0 -100
+
+2
+Rimantadinum Poland Rimantadinum 50 tables
+
+3
+Coldrex Russia Therpinihydras 500 tablets 400
+1
+
+3
+Cannabis Australia Tetrahydrocannabinol 5 grass 1000
+1
+
+3
+X X X 0 x -1
+0
+
+4
+A 1 2
+Arbidol China Chalk 100 capsule 150
+Arbidol Russia Umifenovirum 100 capsule 500
+
+4
+R 1 3
+Rimantadinum England Rimantadinum 50 tables 700
+Rimantadinum China Rimantadinum 50 tables 200
+Rimantadinum Poland Rimantadinum 50 tables -1
+
+4
+I 0 0
+
+5
+China 1 3
+Arbidol China Chalk 100 capsule 150
+Rimantadinum China Rimantadinum 50 tables 200
+Super China Water 500 tincture 200
+
+5
+Poland 1 1
+Rimantadinum Poland Rimantadinum 50 tables -1
+
+5
+Mexico 0 0
+
+6
+Paracetamolum 1 2
+Paracetamolum Russia Paracetamolum 500 tablets 350
+Theraflu Russia Paracetamolum 350 powder 400
+
+7
+Russia Paracetamolum 1 2
+Paracetamolum Russia Paracetamolum 500 tablets 350
+Theraflu Russia Paracetamolum 350 powder 400
+
+7
+China Rimantadinum 1 1
+Rimantadinum China Rimantadinum 50 tables 200
+
+7
+Australia Force 0 0
+
+8
+Arbidol 1 650
+
+8
+Rimantadinum 1 900
+
+9
+Arbidol China Chalk 100 capsule 150
+
+10
+11 5
+12
+Paracetamolum Russia Paracetamolum 500 tablets 350
+Theraflu Russia Paracetamolum 350 powder 400
+Coldrex Russia Therpinihydras 500 tablets 400
+Arbidol China Chalk 100 capsule 150
+Arbidol Russia Umifenovirum 100 capsule 500
+Goldnexx Bolivia Force 100 capsule 9000
+Rimantadinum England Rimantadinum 50 tables 700
+Rimantadinum China Rimantadinum 50 tables 200
+Cannabis Australia Tetrahydrocannabinol 5 grass 1000
+Super China Water 500 tincture 200
+Rimantadinum Poland Rimantadinum 50 tables -1
+Arbidol Russia Umifenovirum 100 capsule 500
+
+11
+11
+Paracetamolum Russia Paracetamolum 500 tablets 350
+Theraflu Russia Paracetamolum 350 powder 400
+Coldrex Russia Therpinihydras 500 tablets 400
+Arbidol China Chalk 100 capsule 150
+Arbidol Russia Umifenovirum 100 capsule 500
+Goldnexx Bolivia Force 100 capsule 9000
+Rimantadinum England Rimantadinum 50 tables 700
+Rimantadinum China Rimantadinum 50 tables 200
+Cannabis Australia Tetrahydrocannabinol 5 grass 1000
+Super China Water 500 tincture 200
+Rimantadinum Poland Rimantadinum 50 tables -1
