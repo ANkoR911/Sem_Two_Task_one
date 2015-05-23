@@ -200,7 +200,7 @@ public:
 
 	bool operator == (const Segment &a) const
 	{
-		return ((A == a.A) && (B == a.B));
+		return (((A == a.A) && (B == a.B)) || ((A == a.B) && (B == a.A)));
 	}
 
 	bool operator != (const Segment &a) const
