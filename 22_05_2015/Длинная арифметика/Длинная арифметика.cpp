@@ -18,7 +18,7 @@ public:
 	LongNum() : sign(0)
 	{}
 
-	LongNum(const string s)
+	LongNum(const string &s)
 	{
 		for (int i = (int)s.length(); i>0; i -= 9)
 			if (i < 9)
@@ -28,6 +28,12 @@ public:
 
 		while (ilum.size() > 1 && ilum.back() == 0)
 			ilum.pop_back();
+	}
+
+	LongNum(const LongNum &a)
+	{
+		ilum = a.ilum;
+		sign = a.sign;
 	}
 
 	void changeSign()
