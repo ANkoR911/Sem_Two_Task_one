@@ -16,9 +16,9 @@ private:
 
 public:	
 
-	Matrix(const int M1, const int N1)
+	Matrix(int M1, int N1)
 	{
-		if ((m <= 0) && (n <= 0))
+		if ((M1 > 0) && (N1 > 0))
 		{
 			m = M1;
 			n = N1;
