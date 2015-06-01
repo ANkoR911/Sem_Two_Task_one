@@ -35,6 +35,13 @@ public:
 		return Rez;
 	}*/
 
+	void swap(Point &b)
+	{
+		Point Help = b;
+		b = (*this);
+		(*this) = Help;
+	}
+
 	double ShowX() const
 	{
 		return x;
@@ -247,8 +254,8 @@ public:
 
 	Vector FindVector() const
 	{
-		Vector Rez(B.ShowX() - A.ShowX(), B.ShowY() - A.ShowY());
-		return Rez;
+		return Vector (B.ShowX() - A.ShowX(), B.ShowY() - A.ShowY());
+		//return Rez;
 	};
 
 	double ModInCube() const
