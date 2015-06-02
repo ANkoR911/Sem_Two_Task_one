@@ -1,0 +1,33 @@
+28
+
+VOTE Vasia 20
+VOTE Sasha 25
+VOTE Sasha 25
+VOTE Sasha 25
+VOTE Sasha 20
+VOTE Vasia 15
+VOTE Sasha 20
+VOTE Vasia 15
+VOTE Sasha 24
+VOTE Vasia 15
+VOTE Vasia 20
+VOTE Sasha 25
+VOTE Sasha 10
+VOTE Sasha 25
+VOTE Sasha 20
+VOTE Vasia 25
+VOTE Sasha 20
+VOTE Vasia 20
+VOTE Sasha 24
+VOTE Vasia 15
+
+TOP Sasha 3
+TOP Sasha 5
+
+HISTORY_SIZE Sasha
+HISTORY_SIZE Vasia
+HISTORY_SIZE Colia
+
+DISTINCT Sasha
+DISTINCT Vasia
+DISTINCT Colia
